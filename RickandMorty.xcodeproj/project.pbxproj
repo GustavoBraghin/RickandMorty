@@ -58,6 +58,7 @@
 		66337B1829B620EB00261A70 /* RickandMorty */ = {
 			isa = PBXGroup;
 			children = (
+				66337B3429B62F0600261A70 /* Extensions */,
 				66337B2F29B623C200261A70 /* Core */,
 				66337B1929B620EB00261A70 /* AppDelegate.swift */,
 				66337B1B29B620EB00261A70 /* SceneDelegate.swift */,
@@ -76,6 +77,13 @@
 				66337B3229B6240900261A70 /* LocationViewController.swift */,
 			);
 			path = Core;
+			sourceTree = "<group>";
+		};
+		66337B3429B62F0600261A70 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

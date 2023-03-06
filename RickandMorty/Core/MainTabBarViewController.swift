@@ -12,6 +12,10 @@ class MainTabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tabBar.isTranslucent = false
+        tabBar.tintColor = UIColor(red: 151/255, green: 206/255, blue: 76/255, alpha: 1)
+        tabBar.backgroundColor = .systemGray
+        
         let characterVC = UINavigationController(rootViewController: CharacterViewController())
         let locationVC = UINavigationController(rootViewController: LocationViewController())
         
