@@ -13,7 +13,7 @@ class MainTabBarViewController: UITabBarController {
         super.viewDidLoad()
 
         tabBar.isTranslucent = false
-        tabBar.tintColor = UIColor(red: 151/255, green: 206/255, blue: 76/255, alpha: 1)
+        tabBar.tintColor = .rickAndMortyGreen
         tabBar.backgroundColor = .systemGray
         
         let characterVC = UINavigationController(rootViewController: CharacterViewController())

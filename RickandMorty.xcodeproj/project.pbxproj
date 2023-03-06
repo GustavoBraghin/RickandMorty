@@ -14,6 +14,7 @@
 		66337B2E29B6234100261A70 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66337B2D29B6234100261A70 /* MainTabBarViewController.swift */; };
 		66337B3129B623E100261A70 /* CharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66337B3029B623E100261A70 /* CharacterViewController.swift */; };
 		66337B3329B6240900261A70 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66337B3229B6240900261A70 /* LocationViewController.swift */; };
+		66337B3629B62F2B00261A70 /* Extension+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66337B3529B62F2B00261A70 /* Extension+UIColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		66337B2D29B6234100261A70 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		66337B3029B623E100261A70 /* CharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewController.swift; sourceTree = "<group>"; };
 		66337B3229B6240900261A70 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
+		66337B3529B62F2B00261A70 /* Extension+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIColor.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 		66337B3429B62F0600261A70 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				66337B3529B62F2B00261A70 /* Extension+UIColor.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -157,6 +160,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				66337B3129B623E100261A70 /* CharacterViewController.swift in Sources */,
+				66337B3629B62F2B00261A70 /* Extension+UIColor.swift in Sources */,
 				66337B2E29B6234100261A70 /* MainTabBarViewController.swift in Sources */,
 				66337B3329B6240900261A70 /* LocationViewController.swift in Sources */,
 				66337B1A29B620EB00261A70 /* AppDelegate.swift in Sources */,
