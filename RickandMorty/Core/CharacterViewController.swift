@@ -45,6 +45,10 @@ class CharacterViewController: UIViewController {
 //        collectionView.contentInsetAdjustmentBehavior = .never
         configureConstraints()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
 
     private func configureConstraints() {
         let collectionViewConstraints = [
@@ -76,6 +80,13 @@ extension CharacterViewController: UICollectionViewDelegate, UICollectionViewDat
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterCollectionViewCell.identifier, for: indexPath)
         cell.contentView.backgroundColor = .rickAndMortyBrown
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("selected item \(indexPath.item)")
+//        present(CharacterInfoViewController(), animated: true)
+        let vc = CharacterInfoViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

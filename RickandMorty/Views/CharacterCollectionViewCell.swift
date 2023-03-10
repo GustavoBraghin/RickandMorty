@@ -15,6 +15,7 @@ class CharacterCollectionViewCell: UICollectionViewCell {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(systemName: "person")
         imageView.contentMode = .scaleToFill
+        imageView.layer.cornerRadius = 12
         imageView.backgroundColor = .rickAndMortyBlue
         return imageView
     }()
@@ -88,6 +89,7 @@ class CharacterCollectionViewCell: UICollectionViewCell {
         
         addSubviews()
         configureContraints()
+        contentView.layer.cornerRadius = 12
     }
     
     private func addSubviews() {

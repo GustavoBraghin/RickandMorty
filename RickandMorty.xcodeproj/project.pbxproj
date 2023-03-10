@@ -15,6 +15,7 @@
 		66337B3129B623E100261A70 /* CharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66337B3029B623E100261A70 /* CharacterViewController.swift */; };
 		66337B3329B6240900261A70 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66337B3229B6240900261A70 /* LocationViewController.swift */; };
 		66337B3629B62F2B00261A70 /* Extension+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66337B3529B62F2B00261A70 /* Extension+UIColor.swift */; };
+		663EDB0429BBB90D00601A48 /* CharacterInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 663EDB0329BBB90D00601A48 /* CharacterInfoViewController.swift */; };
 		666C79C529B7797F00D6C343 /* CharacterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666C79C429B7797F00D6C343 /* CharacterCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,7 @@
 		66337B3029B623E100261A70 /* CharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewController.swift; sourceTree = "<group>"; };
 		66337B3229B6240900261A70 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		66337B3529B62F2B00261A70 /* Extension+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIColor.swift"; sourceTree = "<group>"; };
+		663EDB0329BBB90D00601A48 /* CharacterInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterInfoViewController.swift; sourceTree = "<group>"; };
 		666C79C429B7797F00D6C343 /* CharacterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -96,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				666C79C429B7797F00D6C343 /* CharacterCollectionViewCell.swift */,
+				663EDB0329BBB90D00601A48 /* CharacterInfoViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -174,6 +177,7 @@
 				66337B3629B62F2B00261A70 /* Extension+UIColor.swift in Sources */,
 				66337B2E29B6234100261A70 /* MainTabBarViewController.swift in Sources */,
 				66337B3329B6240900261A70 /* LocationViewController.swift in Sources */,
+				663EDB0429BBB90D00601A48 /* CharacterInfoViewController.swift in Sources */,
 				66337B1A29B620EB00261A70 /* AppDelegate.swift in Sources */,
 				66337B1C29B620EB00261A70 /* SceneDelegate.swift in Sources */,
 				666C79C529B7797F00D6C343 /* CharacterCollectionViewCell.swift in Sources */,
