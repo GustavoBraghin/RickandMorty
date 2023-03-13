@@ -14,7 +14,7 @@ class CharacterViewController: UIViewController {
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.itemSize = CGSize(width: view.bounds.height > 800 ? 400 : 350, height: 140)
+        layout.itemSize = CGSize(width: view.bounds.width * 0.9, height: 140)
         layout.minimumLineSpacing = 20
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
