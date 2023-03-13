@@ -16,6 +16,8 @@ class CharacterCollectionViewCell: UICollectionViewCell {
     
     weak var delegate: CharacterCollectionViewCellDelegate?
     
+    var isFavorite: Bool = false
+    
     lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -26,16 +28,6 @@ class CharacterCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
     
-    lazy var favoriteButton: UIButton = {
-        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(systemName: "heart"), for: .normal)
-        button.tintColor = .rickAndMortyPink
-        button.isEnabled = true
-        button.isUserInteractionEnabled = true
-        return button
-    }()
-    
     lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -44,6 +36,16 @@ class CharacterCollectionViewCell: UICollectionViewCell {
         label.textColor = .white
         label.numberOfLines = 0
         return label
+    }()
+    
+    lazy var favoriteButton: UIButton = {
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(systemName: isFavorite ? "heart.fill" : "heart"), for: .normal)
+        button.tintColor = .rickAndMortyPink
+        button.isEnabled = true
+        button.isUserInteractionEnabled = true
+        return button
     }()
     
     private lazy var specieLabel: UILabel = {
@@ -111,8 +113,8 @@ class CharacterCollectionViewCell: UICollectionViewCell {
     
     private func addSubviews() {
         contentView.addSubview(imageView)
-        contentView.addSubview(favoriteButton)
         contentView.addSubview(nameLabel)
+        contentView.addSubview(favoriteButton)
         contentView.addSubview(specieLabel)
         contentView.addSubview(specieTextLabel)
         contentView.addSubview(originLabel)
@@ -137,17 +139,17 @@ class CharacterCollectionViewCell: UICollectionViewCell {
             imageView.widthAnchor.constraint(equalToConstant: 140)
         ]
         
-        let favoriteButtonConstraints = [
-            favoriteButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-            favoriteButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            favoriteButton.widthAnchor.constraint(equalToConstant: 30),
-            favoriteButton.heightAnchor.constraint(equalToConstant: 30)
-        ]
-        
         let nameLabelConstraints = [
             nameLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 7),
             nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 7),
             nameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5)
+        ]
+        
+        let favoriteButtonConstraints = [
+            favoriteButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -7),
+            favoriteButton.centerYAnchor.constraint(equalTo: nameLabel.centerYAnchor),
+            favoriteButton.widthAnchor.constraint(equalToConstant: 30),
+            favoriteButton.heightAnchor.constraint(equalToConstant: 30)
         ]
         
         let specieLabelConstraints = [
@@ -182,8 +184,8 @@ class CharacterCollectionViewCell: UICollectionViewCell {
         ]
         
         NSLayoutConstraint.activate(imageViewContraints)
-        NSLayoutConstraint.activate(favoriteButtonConstraints)
         NSLayoutConstraint.activate(nameLabelConstraints)
+        NSLayoutConstraint.activate(favoriteButtonConstraints)
         NSLayoutConstraint.activate(specieLabelConstraints)
         NSLayoutConstraint.activate(specieTextLabelConstraints)
         NSLayoutConstraint.activate(originLabelConstraints)
