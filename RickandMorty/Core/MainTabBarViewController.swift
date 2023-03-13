@@ -22,8 +22,8 @@ class MainTabBarViewController: UITabBarController {
         characterVC.tabBarItem.image = UIImage(systemName: "person")
         characterVC.tabBarItem.selectedImage = UIImage(systemName: "person.fill")
         
-        locationVC.tabBarItem.image = UIImage(systemName: "location")
-        locationVC.tabBarItem.selectedImage = UIImage(systemName: "location.fill")
+        locationVC.tabBarItem.image = UIImage(systemName: "heart")
+        locationVC.tabBarItem.selectedImage = UIImage(systemName: "heart.fill")
         
         setViewControllers([characterVC, locationVC], animated: true)
     }

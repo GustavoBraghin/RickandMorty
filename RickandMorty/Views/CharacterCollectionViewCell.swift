@@ -7,8 +7,14 @@
 
 import UIKit
 
+protocol CharacterCollectionViewCellDelegate: AnyObject {
+    func characterCollectionViewDidTapFavorite()
+}
+
 class CharacterCollectionViewCell: UICollectionViewCell {
     static let identifier = "characterCell"
+    
+    weak var delegate: CharacterCollectionViewCellDelegate?
     
     lazy var imageView: UIImageView = {
         let imageView = UIImageView()
@@ -18,6 +24,16 @@ class CharacterCollectionViewCell: UICollectionViewCell {
         imageView.layer.cornerRadius = 12
         imageView.backgroundColor = .rickAndMortyBlue
         return imageView
+    }()
+    
+    lazy var favoriteButton: UIButton = {
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(systemName: "heart"), for: .normal)
+        button.tintColor = .rickAndMortyPink
+        button.isEnabled = true
+        button.isUserInteractionEnabled = true
+        return button
     }()
     
     lazy var nameLabel: UILabel = {
@@ -86,14 +102,16 @@ class CharacterCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        contentView.layer.cornerRadius = 12
         
         addSubviews()
         configureContraints()
-        contentView.layer.cornerRadius = 12
+        configureFavoriteButton()
     }
     
     private func addSubviews() {
         contentView.addSubview(imageView)
+        contentView.addSubview(favoriteButton)
         contentView.addSubview(nameLabel)
         contentView.addSubview(specieLabel)
         contentView.addSubview(specieTextLabel)
@@ -103,12 +121,27 @@ class CharacterCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(lastKnownLocationTextLabel)
     }
     
+    func configureFavoriteButton() {
+        favoriteButton.addTarget(self, action: #selector(didTapFavorite), for: .touchUpInside)
+    }
+    
+    @objc private func didTapFavorite() {
+        delegate?.characterCollectionViewDidTapFavorite()
+    }
+    
     private func configureContraints() {
         let imageViewContraints = [
             imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             imageView.widthAnchor.constraint(equalToConstant: 140)
+        ]
+        
+        let favoriteButtonConstraints = [
+            favoriteButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+            favoriteButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            favoriteButton.widthAnchor.constraint(equalToConstant: 30),
+            favoriteButton.heightAnchor.constraint(equalToConstant: 30)
         ]
         
         let nameLabelConstraints = [
@@ -149,6 +182,7 @@ class CharacterCollectionViewCell: UICollectionViewCell {
         ]
         
         NSLayoutConstraint.activate(imageViewContraints)
+        NSLayoutConstraint.activate(favoriteButtonConstraints)
         NSLayoutConstraint.activate(nameLabelConstraints)
         NSLayoutConstraint.activate(specieLabelConstraints)
         NSLayoutConstraint.activate(specieTextLabelConstraints)

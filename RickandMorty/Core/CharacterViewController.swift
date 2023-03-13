@@ -77,8 +77,11 @@ extension CharacterViewController: UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterCollectionViewCell.identifier, for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterCollectionViewCell.identifier, for: indexPath) as? CharacterCollectionViewCell else {
+            return UICollectionViewCell()
+        }
         cell.contentView.backgroundColor = .rickAndMortyBrown
+        cell.delegate = self
         return cell
     }
     
@@ -105,4 +108,10 @@ extension CharacterViewController: UICollectionViewDelegate, UICollectionViewDat
         }
     }
     
+}
+
+extension CharacterViewController: CharacterCollectionViewCellDelegate {
+    func characterCollectionViewDidTapFavorite() {
+        print("Touch in favorite button")
+    }
 }
