@@ -32,24 +32,23 @@ class CharacterViewController: UIViewController {
         view.layer.opacity = 0
         return view
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         navigationController?.setNavigationBarHidden(true, animated: false)
-
+        
         view.addSubview(collectionView)
         view.addSubview(statusBar)
         collectionView.delegate = self
         collectionView.dataSource = self
-//        collectionView.contentInsetAdjustmentBehavior = .never
         configureConstraints()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
-
+    
     private func configureConstraints() {
         let collectionViewConstraints = [
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -87,7 +86,7 @@ extension CharacterViewController: UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("selected item \(indexPath.item)")
-//        present(CharacterInfoViewController(), animated: true)
+        //        present(CharacterInfoViewController(), animated: true)
         let vc = CharacterInfoViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -97,14 +96,14 @@ extension CharacterViewController: UICollectionViewDelegate, UICollectionViewDat
         
         if yPosition > -40 && isStatusBarHidden {
             isStatusBarHidden = false
-//            UIView.animate(withDuration: 0.1, delay: 0, options: .curveLinear) { [weak self] in
-                self.statusBar.layer.opacity = 1
-//            }
+            //            UIView.animate(withDuration: 0.1, delay: 0, options: .curveLinear) { [weak self] in
+            self.statusBar.layer.opacity = 1
+            //            }
         } else if yPosition < -40 && !isStatusBarHidden {
             isStatusBarHidden = true
-//            UIView.animate(withDuration: 0.1, delay: 0, options: .curveLinear) { [weak self] in
-                self.statusBar.layer.opacity = 0
-//            }
+            //            UIView.animate(withDuration: 0.1, delay: 0, options: .curveLinear) { [weak self] in
+            self.statusBar.layer.opacity = 0
+            //            }
         }
     }
     
