@@ -17,14 +17,14 @@ class MainTabBarViewController: UITabBarController {
         tabBar.backgroundColor = .systemGray
         
         let characterVC = UINavigationController(rootViewController: CharacterViewController())
-        let locationVC = UINavigationController(rootViewController: LocationViewController())
+        let favoritesVC = UINavigationController(rootViewController: CharacterViewController())
         
         characterVC.tabBarItem.image = UIImage(systemName: "person")
         characterVC.tabBarItem.selectedImage = UIImage(systemName: "person.fill")
         
-        locationVC.tabBarItem.image = UIImage(systemName: "heart")
-        locationVC.tabBarItem.selectedImage = UIImage(systemName: "heart.fill")
+        favoritesVC.tabBarItem.image = UIImage(systemName: "heart")
+        favoritesVC.tabBarItem.selectedImage = UIImage(systemName: "heart.fill")
         
-        setViewControllers([characterVC, locationVC], animated: true)
+        setViewControllers([characterVC, favoritesVC], animated: true)
     }
 }
