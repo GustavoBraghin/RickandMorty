@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import SDWebImage
 
 class CharacterViewController: UIViewController {
     
     private var isStatusBarHidden: Bool = true
+    private var viewModel = CharacterViewViewModel()
     
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -72,7 +74,7 @@ class CharacterViewController: UIViewController {
 
 extension CharacterViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return viewModel.characters.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -80,13 +82,18 @@ extension CharacterViewController: UICollectionViewDelegate, UICollectionViewDat
             return UICollectionViewCell()
         }
         cell.contentView.backgroundColor = .rickAndMortyBrown
+        cell.nameLabel.text = viewModel.characters[indexPath.item].name
+        cell.specieTextLabel.text = viewModel.characters[indexPath.item].species
+        cell.originTextLabel.text = viewModel.characters[indexPath.item].origin.name
+//        cell.lastKnownLocationTextLabel.text = viewModel.characters[indexPath.item].location.name
+        let url = URL(string: viewModel.characters[indexPath.item].image)
+        cell.imageView.sd_setImage(with: url)
         cell.delegate = self
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("selected item \(indexPath.item)")
-        //        present(CharacterInfoViewController(), animated: true)
         let vc = CharacterInfoViewController()
         navigationController?.pushViewController(vc, animated: true)
     }

@@ -24,6 +24,7 @@ class CharacterCollectionViewCell: UICollectionViewCell {
         imageView.image = UIImage(systemName: "person")
         imageView.contentMode = .scaleToFill
         imageView.layer.cornerRadius = 12
+        imageView.clipsToBounds = true
         imageView.backgroundColor = .rickAndMortyBlue
         return imageView
     }()
@@ -81,26 +82,27 @@ class CharacterCollectionViewCell: UICollectionViewCell {
         label.text = "Earth (C-137)"
         label.textColor = .white
         label.font = .systemFont(ofSize: 14, weight: .regular)
+        label.numberOfLines = 0
         return label
     }()
     
-    private lazy var lastKnownLocationLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Last known location:"
-        label.textColor = .white
-        label.font = .systemFont(ofSize: 14, weight: .bold)
-        return label
-    }()
-    
-    lazy var lastKnownLocationTextLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Interdimensional Cable"
-        label.textColor = .white
-        label.font = .systemFont(ofSize: 14, weight: .regular)
-        return label
-    }()
+    //    private lazy var lastKnownLocationLabel: UILabel = {
+    //        let label = UILabel()
+    //        label.translatesAutoresizingMaskIntoConstraints = false
+    //        label.text = "Last known location:"
+    //        label.textColor = .white
+    //        label.font = .systemFont(ofSize: 14, weight: .bold)
+    //        return label
+    //    }()
+    //
+    //    lazy var lastKnownLocationTextLabel: UILabel = {
+    //        let label = UILabel()
+    //        label.translatesAutoresizingMaskIntoConstraints = false
+    //        label.text = "Interdimensional Cable"
+    //        label.textColor = .white
+    //        label.font = .systemFont(ofSize: 14, weight: .regular)
+    //        return label
+    //    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -119,8 +121,8 @@ class CharacterCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(specieTextLabel)
         contentView.addSubview(originLabel)
         contentView.addSubview(originTextLabel)
-        contentView.addSubview(lastKnownLocationLabel)
-        contentView.addSubview(lastKnownLocationTextLabel)
+        //        contentView.addSubview(lastKnownLocationLabel)
+        //        contentView.addSubview(lastKnownLocationTextLabel)
     }
     
     func configureFavoriteButton() {
@@ -128,7 +130,7 @@ class CharacterCollectionViewCell: UICollectionViewCell {
     }
     
     @objc private func didTapFavorite() {
-//        delegate?.characterCollectionViewDidTapFavorite()
+        //        delegate?.characterCollectionViewDidTapFavorite()
         isFavorite.toggle()
         if isFavorite {
             favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
@@ -174,20 +176,19 @@ class CharacterCollectionViewCell: UICollectionViewCell {
         ]
         
         let originTextLabelConstraints = [
-            originTextLabel.leadingAnchor.constraint(equalTo: originLabel.trailingAnchor, constant: 5),
-            originTextLabel.topAnchor.constraint(equalTo: originLabel.topAnchor)
+            originTextLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
+            originTextLabel.trailingAnchor.constraint(equalTo: nameLabel.trailingAnchor),
+            originTextLabel.topAnchor.constraint(equalTo: originLabel.bottomAnchor, constant: 3)
         ]
         
-        let lastKnownLocationConstraints = [
-            lastKnownLocationLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
-            lastKnownLocationLabel.topAnchor.constraint(equalTo: originLabel.bottomAnchor, constant: 7)
-        ]
-        
-        let lastKnownLocationTextConstraints = [
-            lastKnownLocationTextLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
-            lastKnownLocationTextLabel.trailingAnchor.constraint(equalTo: nameLabel.trailingAnchor),
-            lastKnownLocationTextLabel.topAnchor.constraint(equalTo: lastKnownLocationLabel.bottomAnchor, constant: 3)
-        ]
+        //        let lastKnownLocationConstraints = [
+        //            lastKnownLocationLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
+        //            lastKnownLocationLabel.topAnchor.constraint(equalTo: originLabel.bottomAnchor, constant: 7)
+        //        ]
+        //
+        //        let lastKnownLocationTextConstraints = [
+        //
+        //        ]
         
         NSLayoutConstraint.activate(imageViewContraints)
         NSLayoutConstraint.activate(nameLabelConstraints)
@@ -196,8 +197,8 @@ class CharacterCollectionViewCell: UICollectionViewCell {
         NSLayoutConstraint.activate(specieTextLabelConstraints)
         NSLayoutConstraint.activate(originLabelConstraints)
         NSLayoutConstraint.activate(originTextLabelConstraints)
-        NSLayoutConstraint.activate(lastKnownLocationConstraints)
-        NSLayoutConstraint.activate(lastKnownLocationTextConstraints)
+        //        NSLayoutConstraint.activate(lastKnownLocationConstraints)
+        //        NSLayoutConstraint.activate(lastKnownLocationTextConstraints)
     }
     
     required init?(coder: NSCoder) {
