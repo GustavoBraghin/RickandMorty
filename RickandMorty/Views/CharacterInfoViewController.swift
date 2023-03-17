@@ -9,6 +9,8 @@ import UIKit
 
 class CharacterInfoViewController: UIViewController {
     
+    var isFavorite: Bool = false
+    
     lazy var avatarImageView: UIImageView = {
         let avatar = UIImageView()
         avatar.translatesAutoresizingMaskIntoConstraints = false
@@ -121,14 +123,25 @@ class CharacterInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .rickAndMortyBlue
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: isFavorite ? "heart.fill" : "heart"), style: .plain, target: self, action: #selector(didTapFavorite))
+        navigationItem.rightBarButtonItem?.tintColor = .rickAndMortyPink
         
         addSubviews()
-        
         configureConstraints()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
+    @objc private func didTapFavorite() {
+//        delegate?.characterCollectionViewDidTapFavorite()
+        isFavorite.toggle()
+        if isFavorite {
+            navigationItem.rightBarButtonItem?.image = UIImage(systemName: "heart.fill")
+        }else{
+            navigationItem.rightBarButtonItem?.image = UIImage(systemName: "heart")
+        }
     }
     
     private func addSubviews() {
@@ -142,8 +155,8 @@ class CharacterInfoViewController: UIViewController {
         view.addSubview(statusTextLabel)
         view.addSubview(genderLabel)
         view.addSubview(genderTextLabel)
-//        view.addSubview(lastKnownLocationLabel)
-//        view.addSubview(lastKnownLocationTextLabel)
+        view.addSubview(lastKnownLocationLabel)
+        view.addSubview(lastKnownLocationTextLabel)
     }
 
     private func configureConstraints() {
@@ -200,6 +213,15 @@ class CharacterInfoViewController: UIViewController {
             genderTextLabel.topAnchor.constraint(equalTo: genderLabel.topAnchor)
         ]
         
+        let lastKnownLocationLabelConstraints = [
+            lastKnownLocationLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
+            lastKnownLocationLabel.topAnchor.constraint(equalTo: genderLabel.bottomAnchor, constant: 10)
+        ]
+        
+        let lastKnownLocationTextLabelConstraints = [
+            lastKnownLocationTextLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
+            lastKnownLocationTextLabel.topAnchor.constraint(equalTo: lastKnownLocationLabel.bottomAnchor, constant: 3)
+        ]
         
         NSLayoutConstraint.activate(avatarImageViewContraints)
         NSLayoutConstraint.activate(nameLabelConstraints)
@@ -211,5 +233,7 @@ class CharacterInfoViewController: UIViewController {
         NSLayoutConstraint.activate(statusTextLabelConstraints)
         NSLayoutConstraint.activate(genderLabelConstrains)
         NSLayoutConstraint.activate(genderTextLabelConstraints)
+        NSLayoutConstraint.activate(lastKnownLocationLabelConstraints)
+        NSLayoutConstraint.activate(lastKnownLocationTextLabelConstraints)
     }
 }

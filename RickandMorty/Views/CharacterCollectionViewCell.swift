@@ -41,7 +41,7 @@ class CharacterCollectionViewCell: UICollectionViewCell {
     lazy var favoriteButton: UIButton = {
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(systemName: isFavorite ? "heart.fill" : "heart"), for: .normal)
+        button.setImage(UIImage(systemName: "heart"), for: .normal)
         button.tintColor = .rickAndMortyPink
         button.isEnabled = true
         button.isUserInteractionEnabled = true
@@ -128,7 +128,13 @@ class CharacterCollectionViewCell: UICollectionViewCell {
     }
     
     @objc private func didTapFavorite() {
-        delegate?.characterCollectionViewDidTapFavorite()
+//        delegate?.characterCollectionViewDidTapFavorite()
+        isFavorite.toggle()
+        if isFavorite {
+            favoriteButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        }else{
+            favoriteButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        }
     }
     
     private func configureContraints() {
