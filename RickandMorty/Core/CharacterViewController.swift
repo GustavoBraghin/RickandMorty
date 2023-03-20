@@ -22,7 +22,7 @@ class CharacterViewController: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(CharacterCollectionViewCell.self, forCellWithReuseIdentifier: CharacterCollectionViewCell.identifier)
-        collectionView.backgroundColor = .blue
+        collectionView.backgroundColor = .clear
         collectionView.showsVerticalScrollIndicator = false
         return collectionView
     }()
@@ -37,7 +37,7 @@ class CharacterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .rickAndMortyYellow
         navigationController?.setNavigationBarHidden(true, animated: false)
         
         view.addSubview(collectionView)
@@ -81,7 +81,7 @@ extension CharacterViewController: UICollectionViewDelegate, UICollectionViewDat
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CharacterCollectionViewCell.identifier, for: indexPath) as? CharacterCollectionViewCell else {
             return UICollectionViewCell()
         }
-        cell.contentView.backgroundColor = .rickAndMortyBrown
+        cell.contentView.backgroundColor = .rickAndMortyBlue
         cell.nameLabel.text = viewModel.characters[indexPath.item].name
         cell.specieTextLabel.text = viewModel.characters[indexPath.item].species
         cell.originTextLabel.text = viewModel.characters[indexPath.item].origin.name
@@ -94,7 +94,7 @@ extension CharacterViewController: UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("selected item \(indexPath.item)")
-        let vc = CharacterInfoViewController()
+        let vc = CharacterInfoViewController(character: viewModel.characters[indexPath.item])
         navigationController?.pushViewController(vc, animated: true)
     }
     

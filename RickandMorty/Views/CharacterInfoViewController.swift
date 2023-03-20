@@ -10,6 +10,7 @@ import UIKit
 class CharacterInfoViewController: UIViewController {
     
     var isFavorite: Bool = false
+    private var character: CharacterModel
     
     lazy var avatarImageView: UIImageView = {
         let avatar = UIImageView()
@@ -120,6 +121,15 @@ class CharacterInfoViewController: UIViewController {
         return label
     }()
 
+    init(character: CharacterModel) {
+        self.character = character
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .rickAndMortyBlue
@@ -128,6 +138,7 @@ class CharacterInfoViewController: UIViewController {
         
         addSubviews()
         configureConstraints()
+        configureInfo()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -157,6 +168,17 @@ class CharacterInfoViewController: UIViewController {
         view.addSubview(genderTextLabel)
         view.addSubview(lastKnownLocationLabel)
         view.addSubview(lastKnownLocationTextLabel)
+    }
+    
+    private func configureInfo() {
+        let url = URL(string: character.image)
+        avatarImageView.sd_setImage(with: url)
+        nameLabel.text = character.name
+        specieTextLabel.text = character.species
+        originTextLabel.text = character.origin.name
+        statusTextLabel.text = character.status
+        genderTextLabel.text = character.gender
+        lastKnownLocationTextLabel.text = character.location.name
     }
 
     private func configureConstraints() {

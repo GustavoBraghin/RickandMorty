@@ -34,7 +34,7 @@ class CharacterCollectionViewCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Pickle Rick"
         label.font = .systemFont(ofSize: 18, weight: .bold)
-        label.textColor = .white
+        label.textColor = .black
         label.numberOfLines = 0
         return label
     }()
@@ -53,7 +53,7 @@ class CharacterCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Specie:"
-        label.textColor = .white
+        label.textColor = .black
         label.font = .systemFont(ofSize: 14, weight: .bold)
         return label
     }()
@@ -62,7 +62,7 @@ class CharacterCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Human"
-        label.textColor = .white
+        label.textColor = .black
         label.font = .systemFont(ofSize: 14, weight: .regular)
         return label
     }()
@@ -71,7 +71,7 @@ class CharacterCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Origin:"
-        label.textColor = .white
+        label.textColor = .black
         label.font = .systemFont(ofSize: 14, weight: .bold)
         return label
     }()
@@ -80,7 +80,7 @@ class CharacterCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Earth (C-137)"
-        label.textColor = .white
+        label.textColor = .black
         label.font = .systemFont(ofSize: 14, weight: .regular)
         label.numberOfLines = 0
         return label
