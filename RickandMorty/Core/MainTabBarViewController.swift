@@ -17,7 +17,7 @@ class MainTabBarViewController: UITabBarController {
         tabBar.backgroundColor = .systemGray
         
         let characterVC = UINavigationController(rootViewController: CharacterViewController())
-        let favoritesVC = UINavigationController(rootViewController: CharacterViewController())
+        let favoritesVC = UINavigationController(rootViewController: LocationViewController())
         
         characterVC.tabBarItem.image = UIImage(systemName: "person")
         characterVC.tabBarItem.selectedImage = UIImage(systemName: "person.fill")

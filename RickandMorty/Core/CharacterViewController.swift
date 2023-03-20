@@ -29,7 +29,7 @@ class CharacterViewController: UIViewController {
     
     private lazy var statusBar: UIView = {
         let view = UIView()
-        view.backgroundColor = .blue
+        view.backgroundColor = .rickAndMortyYellow
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.opacity = 0
         return view
@@ -45,6 +45,18 @@ class CharacterViewController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         configureConstraints()
+        
+//        DispatchQueue.global(qos: .userInitiated).async {
+//            self.viewModel.getAllCharacters()
+//        }
+//        DispatchQueue.main.async {
+//            while self.viewModel.nextUrl != nil {
+//                self.viewModel.getAllCharacters()
+////                print(self.viewModel.characters)
+//            }
+//        }
+        
+        print("View loaded")
     }
     
     override func viewWillAppear(_ animated: Bool) {

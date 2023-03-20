@@ -14,17 +14,18 @@ enum ServiceError: Error {
 }
 
 final class APIRequest {
-    private let baseUrl = "https://rickandmortyapi.com/api"
+    let baseUrl = "https://rickandmortyapi.com/api/character"
     
-    func getAllCharacters(completion: @escaping(Result<APIModel, ServiceError>) -> Void) {
-        let path = "/character"
+    func getAllCharacters(urlString: String?, completion: @escaping(Result<APIModel, ServiceError>) -> Void) {
         
-        guard let url = URL(string: baseUrl + path) else {
+        guard let url = urlString,
+              let mainUrl = URL(string: url)
+        else {
             completion(.failure(.invalidURL))
             return
         }
         
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+        let task = URLSession.shared.dataTask(with: mainUrl) { data, response, error in
             guard let data = data else {
                 completion(.failure(.network(error)))
                 return
