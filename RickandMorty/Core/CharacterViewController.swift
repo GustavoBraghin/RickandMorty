@@ -39,22 +39,21 @@ class CharacterViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .rickAndMortyYellow
         navigationController?.setNavigationBarHidden(true, animated: false)
+        viewModel.getAllCharacters()
+        
+        
+        DispatchQueue.main.async {
+            while !self.viewModel.finishedFetching {
+                self.collectionView.reloadData()
+                print("reloaded")
+            }
+        }
         
         view.addSubview(collectionView)
         view.addSubview(statusBar)
         collectionView.delegate = self
         collectionView.dataSource = self
         configureConstraints()
-        
-//        DispatchQueue.global(qos: .userInitiated).async {
-//            self.viewModel.getAllCharacters()
-//        }
-//        DispatchQueue.main.async {
-//            while self.viewModel.nextUrl != nil {
-//                self.viewModel.getAllCharacters()
-////                print(self.viewModel.characters)
-//            }
-//        }
         
         print("View loaded")
     }
@@ -97,7 +96,7 @@ extension CharacterViewController: UICollectionViewDelegate, UICollectionViewDat
         cell.nameLabel.text = viewModel.characters[indexPath.item].name
         cell.specieTextLabel.text = viewModel.characters[indexPath.item].species
         cell.originTextLabel.text = viewModel.characters[indexPath.item].origin.name
-//        cell.lastKnownLocationTextLabel.text = viewModel.characters[indexPath.item].location.name
+        //        cell.lastKnownLocationTextLabel.text = viewModel.characters[indexPath.item].location.name
         let url = URL(string: viewModel.characters[indexPath.item].image)
         cell.imageView.sd_setImage(with: url)
         cell.delegate = self

@@ -11,11 +11,11 @@ final class CharacterViewViewModel {
     private let apiRequest = APIRequest()
     var nextUrl: String?
     var characters: [CharacterModel]
+    var finishedFetching = false
     
     init() {
-        self.characters = []
         self.nextUrl = apiRequest.baseUrl
-        getAllCharacters()
+        self.characters = []
     }
     
     func getAllCharacters() {
@@ -28,6 +28,12 @@ final class CharacterViewViewModel {
                 self?.nextUrl = model.info.next
                 print("API Success")
                 print(self?.nextUrl)
+                
+                if self?.nextUrl != nil {
+                    self?.getAllCharacters()
+                } else {
+                    self?.finishedFetching = true
+                }
                 
             case .failure(let error):
                 print(error.localizedDescription)
