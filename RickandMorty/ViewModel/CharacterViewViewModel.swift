@@ -5,7 +5,7 @@
 //  Created by Gustavo da Silva Braghin on 17/03/23.
 //
 
-import Foundation
+import UIKit
 
 final class CharacterViewViewModel {
     private let apiRequest = APIRequest()
@@ -18,19 +18,24 @@ final class CharacterViewViewModel {
         self.characters = []
     }
     
-    func getAllCharacters() {
+    func getAllCharacters(collectionView: UICollectionView) {
         apiRequest.getAllCharacters(urlString: nextUrl) { [weak self] result in
             switch result {
             case .success(let model):
                 model.results.forEach { character in
                     self?.characters.append(character)
                 }
+                
                 self?.nextUrl = model.info.next
                 print("API Success")
-                print(self?.nextUrl)
+                
+                DispatchQueue.main.async {
+                    collectionView.reloadData()
+                    print("Reloaded collection view")
+                }
                 
                 if self?.nextUrl != nil {
-                    self?.getAllCharacters()
+                    self?.getAllCharacters(collectionView: collectionView)
                 } else {
                     self?.finishedFetching = true
                 }

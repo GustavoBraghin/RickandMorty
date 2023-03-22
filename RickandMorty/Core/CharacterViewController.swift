@@ -22,8 +22,8 @@ class CharacterViewController: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(CharacterCollectionViewCell.self, forCellWithReuseIdentifier: CharacterCollectionViewCell.identifier)
-        collectionView.backgroundColor = .clear
-        collectionView.showsVerticalScrollIndicator = false
+        collectionView.backgroundColor = .rickAndMortyYellow
+        collectionView.showsVerticalScrollIndicator = true
         return collectionView
     }()
     
@@ -39,15 +39,7 @@ class CharacterViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .rickAndMortyYellow
         navigationController?.setNavigationBarHidden(true, animated: false)
-        viewModel.getAllCharacters()
-        
-        
-        DispatchQueue.main.async {
-            while !self.viewModel.finishedFetching {
-                self.collectionView.reloadData()
-                print("reloaded")
-            }
-        }
+        viewModel.getAllCharacters(collectionView: collectionView)
         
         view.addSubview(collectionView)
         view.addSubview(statusBar)

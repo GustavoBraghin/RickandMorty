@@ -15,6 +15,7 @@ class MainTabBarViewController: UITabBarController {
         tabBar.isTranslucent = false
         tabBar.tintColor = .rickAndMortyPink
         tabBar.barTintColor = .rickAndMortyBlue
+        tabBar.backgroundColor = .rickAndMortyBlue
         
         let characterVC = UINavigationController(rootViewController: CharacterViewController())
         let favoritesVC = UINavigationController(rootViewController: LocationViewController())
