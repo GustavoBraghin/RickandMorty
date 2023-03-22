@@ -39,6 +39,12 @@ class CharacterViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .rickAndMortyYellow
         navigationController?.setNavigationBarHidden(true, animated: false)
+        
+        /// setting navbar title color to black
+//        navigationItem.title = "Characters"
+//        let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.black]
+//        navigationController?.navigationBar.titleTextAttributes = textAttributes
+        
         viewModel.getAllCharacters(collectionView: collectionView)
         
         view.addSubview(collectionView)

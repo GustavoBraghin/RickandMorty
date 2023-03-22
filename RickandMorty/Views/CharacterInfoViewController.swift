@@ -135,6 +135,7 @@ class CharacterInfoViewController: UIViewController {
         view.backgroundColor = .rickAndMortyBlue
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: isFavorite ? "heart.fill" : "heart"), style: .plain, target: self, action: #selector(didTapFavorite))
         navigationItem.rightBarButtonItem?.tintColor = .rickAndMortyPink
+        navigationController?.navigationBar.tintColor = .black
         
         addSubviews()
         configureConstraints()
