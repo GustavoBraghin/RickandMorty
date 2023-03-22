@@ -10,7 +10,7 @@ import UIKit
 class CharacterInfoViewController: UIViewController {
     
     var isFavorite: Bool = false
-    private var character: CharacterModel
+    private var viewModel: CharacterInfoViewViewModel
     
     lazy var avatarImageView: UIImageView = {
         let avatar = UIImageView()
@@ -122,7 +122,7 @@ class CharacterInfoViewController: UIViewController {
     }()
 
     init(character: CharacterModel) {
-        self.character = character
+        self.viewModel = CharacterInfoViewViewModel(character: character)
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -172,14 +172,14 @@ class CharacterInfoViewController: UIViewController {
     }
     
     private func configureInfo() {
-        let url = URL(string: character.image)
+        let url = URL(string: viewModel.character.image)
         avatarImageView.sd_setImage(with: url)
-        nameLabel.text = character.name
-        specieTextLabel.text = character.species
-        originTextLabel.text = character.origin.name
-        statusTextLabel.text = character.status
-        genderTextLabel.text = character.gender
-        lastKnownLocationTextLabel.text = character.location.name
+        nameLabel.text = viewModel.character.name
+        specieTextLabel.text = viewModel.character.species
+        originTextLabel.text = viewModel.character.origin.name
+        statusTextLabel.text = viewModel.character.status
+        genderTextLabel.text = viewModel.character.gender
+        lastKnownLocationTextLabel.text = viewModel.character.location.name
     }
 
     private func configureConstraints() {
